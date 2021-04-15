@@ -11,4 +11,12 @@ router.get('/', function (req, res, next) {
     })
 });
 
+
+router.post('/',async function(req, res, next){
+    Mongolib.getDatabase(db => {
+        db.collection("offers").insertOne(req.body);
+        res.send(req.body);
+    });
+});
+
 module.exports = router;
